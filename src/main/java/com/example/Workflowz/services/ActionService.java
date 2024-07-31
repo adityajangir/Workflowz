@@ -32,13 +32,4 @@ public class ActionService {
         actionRepository.deleteById(id);
     }
 
-//    public boolean DobCheck(ConditionModel condition, Map<String, Object> inputData){
-//
-//    }
-//    public boolean PincodeCheck(ConditionModel condition, Map<String, Object> inputData){
-//
-//    }
-//    public boolean GenderCheck(ConditionModel condition, Map<String, Object> inputData){
-//
-//    }
 }

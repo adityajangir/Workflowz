@@ -1,22 +1,18 @@
 package com.example.Workflowz.services;
 
 import com.example.Workflowz.models.*;
-import com.example.Workflowz.repository.ExecutionRepository;
 import com.example.Workflowz.repository.WorkflowresultRepository;
 import com.example.Workflowz.repository.WorkflowstepresultRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.validation.constraints.Null;
-import java.time.LocalDateTime;
 import java.util.*;
 
 
 @Slf4j
 @Service
 
-
+// Aditya
 
 public class ExecutionService {
 
@@ -66,7 +62,7 @@ public class ExecutionService {
             ActionModel action = step.getAction();
             Integer conditionResult = 0;
             switch (action.getName()) {
-                case "DobCheck":
+                case "AgeCheck":
                     conditionResult = (DobCheck(step.getCondition(), inputData)? 1: 0);
                     break;
                 case "PincodeCheck":
@@ -118,11 +114,6 @@ public class ExecutionService {
         List<WorkflowstepModel> steps = step.getWorkflow().getSteps();
         int currentIndex = steps.indexOf(step);
         return currentIndex+1 < steps.size()?  steps.get(currentIndex+1): null;
-//        if (conditionResult>) {
-//            return currentIndex + 1 < steps.size() ? steps.get(currentIndex + 1) : null;
-//        } else {
-//            return currentIndex + 2 < steps.size() ? steps.get(currentIndex + 2) : null;
-//        }
     }
 
     private void logExecution(WorkflowresultModel workflowResult, WorkflowstepModel step, Integer conditionResult, Map<String, Object> inputData) {
@@ -131,7 +122,6 @@ public class ExecutionService {
         logStep.setWorkflowStep(step);
         logStep.setActionResult(conditionResult>0 ? "CONDITION_TRUE" : "CONDITION_FALSE");
         logStep.setConditionResult(step.getCondition().getConditionText());
-
         logStep.setStopFlag(conditionResult);
 
         workflowstepresultRepository.save(logStep);

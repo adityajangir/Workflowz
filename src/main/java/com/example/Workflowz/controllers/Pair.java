@@ -1,5 +1,5 @@
 package com.example.Workflowz.controllers;
-
+// Custom pair class to use in Graph
 public class Pair<K, V> {
     private K key;
     private V value;

@@ -15,6 +15,8 @@ import java.util.Optional;
 @RequestMapping("/workflows")
 public class WorkflowController {
 
+//    @Autowired
+//    WorkflowModel workflowModel;
     @Autowired
     private WorkflowService workflowService;
 
@@ -86,6 +88,7 @@ public class WorkflowController {
 
     @DeleteMapping("/{id}")
     public void deleteWorkflow(@PathVariable Long id) {
+        System.out.println(id);
         workflowService.deleteById(id);
     }
 }

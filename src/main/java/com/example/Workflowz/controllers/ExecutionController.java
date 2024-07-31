@@ -43,7 +43,11 @@ import java.util.Map;
 @RestController
 @RequestMapping("/execution")
 public class ExecutionController {
+    //  Dynamic graph logic
     private Map<String, Map<String, Pair<Integer, String>>> generateGraph(List<WorkflowstepresultModel> stepResults) {
+        // Map<Action, Map<Activity, pair<Key, Condition>>
+        // to make the workflow dynamic for frontend
+
         Map<String, Map<String, Pair<Integer, String>>> graph = new HashMap<>();
 
         for (WorkflowstepresultModel result : stepResults) {
